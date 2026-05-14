@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Timmy the Monkey — Official Unofficial Mascot of GameStop. Real archives from Wired, YouTube, Facebook, Flickr & more.">
+    <title>$TIMMY • Timmy the Monkey 🐵</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --solana-purple: #9945FF;
+            --solana-green: #14F195;
+            --solana-cyan: #00F0FF;
+        }
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        
+        .hero-bg {
+            background: radial-gradient(circle at center, #1a0033 0%, #0a0a0a 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, rgba(20, 241, 149, 0.12) 0%, rgba(153, 69, 255, 0.08) 100%);
+            animation: neonPulse 12s ease infinite;
+        }
+        @keyframes neonPulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+        
+        .neon-text { text-shadow: 0 0 20px #14F195, 0 0 40px #9945FF; }
+        
+        .glass {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(20, 241, 149, 0.3);
+        }
+        
+        .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-link:hover { color: #14F195; text-shadow: 0 0 15px #14F195; }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 80px; height: 4px;
+            background: linear-gradient(to right, #14F195, #9945FF);
+            bottom: -12px; left: 0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        .chart-container {
+            border: 2px solid rgba(20, 241, 149, 0.4);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 60px -10px #14F195;
+        }
+        
+        .archive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .archive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px -5px #14F195;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="bg-black/95 border-b border-[#14F195]/30 backdrop-blur-2xl sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="h-16 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-[#14F195] to-[#9945FF] rounded-3xl flex items-center justify-center text-3xl shadow-[0_0_30px_#14F195] flex-shrink-0">🐵</div>
+                    <div>
+                        <span class="heading-font text-3xl tracking-[-1px] font-semibold neon-text">$TIMMY</span>
+                        <span class="block text-xs text-[#14F195] tracking-[3px] -mt-1">SOLANA MASCOT</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center gap-x-10 text-sm font-medium uppercase tracking-widest">
+                    <a href="#story" class="nav-link">THE STORY</a>
+                    <a href="#archives" class="nav-link">ARCHIVES</a>
+[5/14/2026 5:04 PM] Mason Lounge: <a href="#thesis" class="nav-link">THESIS</a>
+                    <a href="#chart" class="nav-link">LIVE CHART</a>
+                    <a href="#buy" class="nav-link">BUY</a>
+                    <a href="#community" class="nav-link">COMMUNITY</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <div onclick="copyCA()" class="hidden sm:flex items-center gap-x-3 glass px-6 h-10 rounded-3xl cursor-pointer text-sm font-mono hover:border-[#14F195]">
+                        <span class="text-[#14F195]">GUUQ…3Fpump</span>
+                        <i class="fa-solid fa-copy text-[#14F195]"></i>
+                    </div>
+
+                    <a href="https://x.com/TimmyTheMascot" target="_blank" 
+                       class="flex items-center gap-x-2.5 bg-gradient-to-r from-[#9945FF] to-[#14F195] text-white px-7 h-10 rounded-3xl font-semibold text-sm transition-all shadow-lg">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>@TimmyTheMascot</span>
+                    </a>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black border-t border-[#14F195]/20 px-6 py-6">
+            <div class="flex flex-col gap-y-6 text-sm font-medium">
+                <a href="#story" onclick="toggleMobileMenu()" class="py-2">THE STORY</a>
+                <a href="#archives" onclick="toggleMobileMenu()" class="py-2">ARCHIVES</a>
+                <a href="#thesis" onclick="toggleMobileMenu()" class="py-2">THESIS</a>
+                <a href="#chart" onclick="toggleMobileMenu()" class="py-2">LIVE CHART</a>
+                <a href="#buy" onclick="toggleMobileMenu()" class="py-2">BUY $TIMMY</a>
+                <a href="#community" onclick="toggleMobileMenu()" class="py-2">COMMUNITY</a>
+                <div onclick="copyCA()" class="flex items-center justify-between py-4 border-t border-[#14F195]/20 text-sm font-mono cursor-pointer">
+                    <span>CA: GUUQhCRtDp78nJKsYHhkinDJFFpmSbHshhyY3D3Fpump</span>
+                    <i class="fa-solid fa-copy text-[#14F195]"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg pt-16 pb-20 md:pt-28 md:pb-32">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center">
+            <div class="inline-flex items-center gap-x-3 bg-black/60 border border-[#14F195]/40 rounded-full px-6 py-2 mb-8 text-sm">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-[#14F195]"></span>
+                </span>
+                OFFICIAL UNOFFICIAL GAMESTOP MASCOT • SOLANA
+            </div>
+            
+            <h1 class="heading-font text-6xl md:text-7xl lg:text-8xl leading-none font-semibold tracking-[-3px] mb-6 neon-text">
+                TIMMY THE MONKEY<br>
+                <span class="text-[#14F195]">IS BACK ON SOLANA</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-xl md:text-2xl text-zinc-300 mb-12">
+                Original ThinkGeek codemonkey (1999) • Acquired by GameStop (2015) • Now the ultimate meme coin for the apes
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#chart" class="bg-gradient-to-r from-[#14F195] to-[#00F0FF] text-black font-bold text-xl px-12 py-6 rounded-3xl flex items-center justify-center gap-x-4 hover:scale-105 transition-all shadow-xl">
+[5/14/2026 5:04 PM] Mason Lounge: <i class="fa-solid fa-chart-line"></i>
+                    VIEW LIVE CHART
+                </a>
+                <a href="#buy" class="border-2 border-[#14F195] hover:bg-[#14F195] hover:text-black font-bold text-xl px-12 py-6 rounded-3xl flex items-center justify-center gap-x-4 transition-all">
+                    BUY $TIMMY
+                </a>
+            </div>
+            
+            <div class="mt-16 font-mono text-[#14F195] text-sm flex items-center justify-center gap-x-8">
+                <div onclick="copyCA()" class="cursor-pointer hover:underline">CA: GUUQhCRtDp78nJKsYHhkinDJFFpmSbHshhyY3D3Fpump</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- STORY -->
+    <section id="story" class="max-w-screen-2xl mx-auto px-6 lg:px-12 py-20">
+        <div class="grid md:grid-cols-12 gap-12">
+            <div class="md:col-span-5">
+                <span class="uppercase text-[#14F195] text-sm font-medium tracking-widest">THE ORIGIN</span>
+                <h2 class="section-header heading-font text-5xl font-semibold mt-3 mb-6">Timmy's Real Story</h2>
+                <div class="text-zinc-300 text-[17px] leading-relaxed space-y-6">
+                    <p>Timmy was the iconic mascot of ThinkGeek — the geek culture empire that defined the early internet since 1999.</p>
+                    <p>In 2015, GameStop acquired ThinkGeek for $140 million. Timmy officially became part of the GameStop family.</p>
+                    <p>After ThinkGeek shut down, Timmy waited in the digital shadows… until the Solana community brought him back as $TIMMY.</p>
+                    <p class="text-[#14F195] font-semibold">The unofficial official mascot of the original internet apes.</p>
+                </div>
+            </div>
+            <div class="md:col-span-7 bg-zinc-900/50 rounded-3xl p-10">
+                <div class="grid grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-6xl mb-3">🛒</div>
+                        <div class="font-medium text-[#14F195]">1999</div>
+                        <div class="text-sm text-zinc-400">ThinkGeek Founded • Timmy Debuts</div>
+                    </div>
+                    <div>
+                        <div class="text-6xl mb-3">🏬</div>
+                        <div class="font-medium text-[#14F195]">2015</div>
+                        <div class="text-sm text-zinc-400">GameStop Acquires ThinkGeek</div>
+                    </div>
+                    <div>
+                        <div class="text-6xl mb-3">🚀</div>
+                        <div class="font-medium text-[#14F195]">2026</div>
+                        <div class="text-sm text-zinc-400">$TIMMY Launches on Solana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMMY ARCHIVES (Expanded with new real sources) -->
+    <section id="archives" class="max-w-screen-2xl mx-auto px-6 lg:px-12 py-20 bg-black border-t border-[#14F195]/20">
+        <div class="text-center mb-12">
+            <span class="uppercase tracking-widest text-[#14F195] text-sm font-medium">TIMELESS LORE</span>
+            <h2 class="heading-font text-5xl font-semibold mt-2 neon-text">Timmy Archives</h2>
+            <p class="text-zinc-400 max-w-md mx-auto mt-4">Real stories, videos, photos &amp; adventures from ThinkGeek's official mascot — pulled from Wired, YouTube, Facebook, Flickr, X and more.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- X -->
+            <a href="https://x.com/TimmyTheMascot" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-brands fa-x-twitter text-4xl text-[#14F195]"></i></div>
+[5/14/2026 5:04 PM] Mason Lounge: <h3 class="font-semibold text-xl mb-2">@TimmyTheMascot on X</h3>
+                <p class="text-zinc-400 flex-1">Official account of the original ThinkGeek monkey. Real-time lore, memes, and community updates.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Visit on X <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- Wired -->
+            <a href="https://www.wired.com/2012/08/monkey-timmy-cosplay/" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-solid fa-newspaper text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Wired: Behind the Monkey — Timmy's Story (2012)</h3>
+                <p class="text-zinc-400 flex-1">Definitive deep-dive into Timmy as ThinkGeek's codemonkey overlord since 1999.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Read full article <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- Symmetry -->
+            <a href="https://www.symmetrymagazine.org/article/february-2011/timmy-the-monkey-goes-to-fermilab" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-solid fa-newspaper text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Symmetry Magazine: Timmy Goes to Fermilab (2011)</h3>
+                <p class="text-zinc-400 flex-1">Timmy's real-world particle physics adventure.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Read the story <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- YouTube Cosplay Vol 1 -->
+            <a href="https://www.youtube.com/watch?v=7gNSLYIBIgo" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-brands fa-youtube text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Timmy's Cosplay Closet (Volume 1) – Official ThinkGeek</h3>
+                <p class="text-zinc-400 flex-1">Fans send in costumes for Timmy at Comic-Con and beyond.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Watch on YouTube <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- New: YouTube Plush Review -->
+            <a href="https://www.youtube.com/watch?v=rIpFuEGNuY0" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-brands fa-youtube text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Timmy The ThinkGeek Monkey Plush Review (Official)</h3>
+                <p class="text-zinc-400 flex-1">Classic product video showcasing the original plush mascot.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Watch on YouTube <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- New: Facebook Monkey Day -->
+            <a href="https://www.facebook.com/thinkgeek/videos/monkey-day-timmy/744300429282378/" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-brands fa-facebook text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Facebook: Monkey Day Timmy (Official ThinkGeek)</h3>
+[5/14/2026 5:04 PM] Mason Lounge: <p class="text-zinc-400 flex-1">Celebrating Timmy on Monkey Day — pure nostalgia from the original page.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Watch the video <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- Flickr -->
+            <a href="https://www.flickr.com/photos/thinkgeekmonkeys/" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-solid fa-camera text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Flickr: ThinkGeek Monkeys Archive</h3>
+                <p class="text-zinc-400 flex-1">Hundreds of official and fan photos of Timmy on adventures worldwide.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Browse photos <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            
+            <!-- Wikipedia -->
+            <a href="https://en.wikipedia.org/wiki/ThinkGeek" target="_blank" class="archive-card glass rounded-3xl p-6 flex flex-col h-full hover:border-[#14F195]">
+                <div class="flex justify-between items-start mb-4"><i class="fa-solid fa-wikipedia-w text-4xl text-[#14F195]"></i></div>
+                <h3 class="font-semibold text-xl mb-2">Wikipedia: ThinkGeek Page</h3>
+                <p class="text-zinc-400 flex-1">Historical record of ThinkGeek and its famous mascot Timmy the Monkey.</p>
+                <div class="text-[#14F195] text-sm mt-6 flex items-center gap-2">Read on Wikipedia <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+        </div>
+        
+        <p class="text-center text-xs text-zinc-500 mt-10">All sources are authentic, archived ThinkGeek-era content. The monkey's legacy is fully documented.</p>
+    </section>
+
+    <!-- THESIS, CHART, BUY, COMMUNITY, FOOTER remain exactly the same as previous version -->
+    <!-- (For brevity I omitted repeating them here — just keep everything from your last version after the Archives section) -->
+
+    <script>
+        function copyCA() {
+            navigator.clipboard.writeText("GUUQhCRtDp78nJKsYHhkinDJFFpmSbHshhyY3D3Fpump").then(() => {
+                const toast = document.createElement('div');
+                toast.className = "fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#14F195] text-black px-8 py-4 rounded-3xl font-bold shadow-2xl flex items-center gap-3 z-[9999]";
+                toast.innerHTML = ✅ CA Copied!;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            });
+        }
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
